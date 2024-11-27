@@ -125,7 +125,5 @@ The app will be running at `http://localhost:5000`
 
 The application is deployed on Render, and the public URL is:
 https://url-shortener-api-2ii4.onrender.com/
-## Demo
 
-Insert gif or link to demo
 
