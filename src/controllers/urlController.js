@@ -1,8 +1,8 @@
-const { nanoid } = require('nanoid');
-const Url = require('../models/Url');
+import { nanoid } from 'nanoid';
+import Url from '../models/Url.js';  // Ensure to use .js extension for ES Modules
 
 // Shorten a URL
-exports.shortenUrl = async (req, res) => {
+export const shortenUrl = async (req, res) => {
   const { originalUrl } = req.body;
   if (!originalUrl) {
     return res.status(400).json({ error: 'Original URL is required.' });
@@ -18,7 +18,7 @@ exports.shortenUrl = async (req, res) => {
 };
 
 // Redirect to the original URL
-exports.redirectUrl = async (req, res) => {
+export const redirectUrl = async (req, res) => {
   const { shortId } = req.params;
 
   try {
@@ -38,7 +38,7 @@ exports.redirectUrl = async (req, res) => {
 };
 
 // Get stats for a short URL
-exports.getStats = async (req, res) => {
+export const getStats = async (req, res) => {
   const { shortId } = req.params;
 
   try {

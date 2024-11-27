@@ -1,17 +1,20 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const urlRoutes = require('./routes/urlRoutes');
-const rateLimiter = require('./utils/rateLimiter');
+import dotenv from 'dotenv';
+dotenv.config();
+
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import urlRoutes from './routes/urlRoutes.js';  // Note the .js extension
+import { rateLimiterMiddleware } from './utils/rateLimiter.js';  // Named import
+
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use(rateLimiter);
+app.use(rateLimiterMiddleware);  // Use the middleware for rate limiting
 
 // API Routes
 app.use('/', urlRoutes);

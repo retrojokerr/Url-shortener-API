@@ -1,5 +1,5 @@
-const express = require('express');
-const { shortenUrl, redirectUrl, getStats } = require('../controllers/urlController');
+import express from 'express';
+import { shortenUrl, redirectUrl, getStats } from '../controllers/urlController.js';  // Add .js extension
 
 const router = express.Router();
 
@@ -12,4 +12,5 @@ router.get('/:shortId', redirectUrl);
 // GET /stats/:shortId: Get stats for a specific short URL
 router.get('/stats/:shortId', getStats);
 
-module.exports = router;
+
+export default router;

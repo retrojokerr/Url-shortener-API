@@ -1,4 +1,4 @@
-const { RateLimiterMemory } = require('rate-limiter-flexible');
+import { RateLimiterMemory } from 'rate-limiter-flexible';
 
 // Configure rate limiter
 const rateLimiter = new RateLimiterMemory({
@@ -6,7 +6,8 @@ const rateLimiter = new RateLimiterMemory({
   duration: 60, // Per 60 seconds
 });
 
-module.exports = (req, res, next) => {
+// Use named export
+export const rateLimiterMiddleware = (req, res, next) => {
   rateLimiter
     .consume(req.ip)
     .then(() => next())
